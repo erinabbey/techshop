@@ -4,6 +4,7 @@ import {useForm, FormProvider} from 'react-hook-form'
 import FormInput from "./CustomTextField"
 import {commerce} from '../../lib/commerce'
 import {Link} from 'react-router-dom'
+import './AddressFormStyle.css'
 
 const AddressForm = ({checkoutToken, next}) => {
     const methods = useForm()
@@ -58,21 +59,34 @@ const AddressForm = ({checkoutToken, next}) => {
         <>
         <Typography variant = "h6" gutterBottom>Shipping Address</Typography>
         <FormProvider {...methods}>
+        <div className ="container">
             <form onSubmit = {methods.handleSubmit((data) => next({...data, shippingCountry, shippingSubdivision, shippingOption}))} >
                 <Grid item container  spacing = {3}>
-                <div class="form__group field">
-                        <input className = 'input__field' name = "firstName" label = "First Name" required/>
-                        <label for="name" className="form__label">First name</label>
-                        <input className = 'input__field' name = "lastName" label = "Last Name" required/>
-                        <label for="name" classname="form__label">Last name</label>
-                        <input className = 'input__field' name = "address1" label = "Address" required/>
-                        <label for="name" className="form__label">Address</label>
-                        <input className = 'input__field' name = "email" label = "Email" required/>
-                        <label for="name" className="form__label">Email</label>
-                        <input className = 'input__field' name = "city" label = "City" required/>
-                        <label for="name" className="form__label">City</label>
-                        <input className = 'input__field' name = "zip" label = "ZIP/Postal code" required/>
-                        <label for="name" className="form__label">ZIP/Postal code</label>
+                
+                    <div className = 'omrs-input-group'>
+                         <label for="name" className="omrs-input-underlined"/>
+                        <input  name = "firstName" label = "First Name" required/>
+                        <span className="omrs-input-label">First name</span>
+
+                        <label for="name" className="omrs-input-underlined"/>
+                        <input  name = "lastName" label = "Last Name" required/>
+                        <span className="omrs-input-label">Last name</span>
+
+                        <label for="name" className="omrs-input-underlined"/>
+                        <input  name = "address1" label = "Address" required/>
+                        <span className="omrs-input-label">Address</span>
+
+                        <label for="name" className="omrs-input-underlined"/>
+                        <input  name = "email" label = "Email" required/>
+                        <span className="omrs-input-label">Email</span>
+
+                        <label for="name" className="omrs-input-underlined"/>
+                        <input  name = "city" label = "City" required/>
+                        <span className="omrs-input-label">City</span>
+
+                        <label for="name" className="omrs-input-underlined"/>
+                        <input  name = "zip" label = "ZIP/Postal code" required/>
+                        <span className="omrs-input-label">ZIP/Postal code</span>
                         </div>
                         <Grid item xs = {12} sm = {6}>
                             <InputLabel>Shipping Address </InputLabel>
@@ -111,6 +125,7 @@ const AddressForm = ({checkoutToken, next}) => {
                         <Button type = 'submit' color = 'primary' variant = 'contained'>Next</Button>
                 </div>
             </form>
+            </div>
         </FormProvider>
         </>
     )
